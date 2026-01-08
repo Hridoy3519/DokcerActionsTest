@@ -1,15 +1,18 @@
+version: "3.8"
+
 services:
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
     environment:
-      - WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
-      - WATCHTOWER_LABEL_ENABLE=true # update only designated containers
+      - WATCHTOWER_POLL_INTERVAL=60
+      - WATCHTOWER_LABEL_ENABLE=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
   appservice:
-    image: kkumar42721/githubactionimage:latest
+    image: hridoy3519/githubactionimage:latest
+    container_name: appservice
     ports:
       - "3000:8080"
     labels:
